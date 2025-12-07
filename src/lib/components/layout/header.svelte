@@ -181,7 +181,7 @@
 
         {#if isDownloadDropdownOpen}
           <div
-            class="absolute right-0 top-full z-50 mt-2 w-56 rounded-2xl border border-black/10 bg-black/5 shadow-2xl backdrop-blur-md sm:w-52 dark:border-[#333] dark:bg-[#1f1f1f57]"
+            class="absolute right-0 top-full z-50 mt-2 w-56 overflow-hidden rounded-2xl border border-black/10 bg-black/5 shadow-2xl backdrop-blur-md sm:w-52 dark:border-[#333] dark:bg-[#1f1f1f57]"
           >
             <div
               class="flex items-center justify-between gap-3 px-4 py-3 transition-colors hover:bg-black/5 dark:hover:bg-white/5"
@@ -195,12 +195,18 @@
               >
                 PNG
               </button>
-              <Input
-                type="number"
-                bind:value={$downloadResolution}
-                placeholder="512"
-                class="h-7 w-20 text-xs"
-              />
+              <div class="relative">
+                <Input
+                  type="number"
+                  bind:value={$downloadResolution}
+                  placeholder="512"
+                  class="h-7 w-20 pr-6 text-xs"
+                />
+                <span
+                  class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-gray-400"
+                  >px</span
+                >
+              </div>
             </div>
             <button
               class="w-full cursor-pointer px-4 py-3 text-left text-sm text-gray-800 transition-colors hover:bg-black/5 hover:text-black dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white"

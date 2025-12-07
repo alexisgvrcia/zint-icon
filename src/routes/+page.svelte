@@ -12,10 +12,10 @@
 
 <Header />
 
-<main class="min-h-dvh select-none overflow-hidden px-4 pt-16 md:px-6 md:pt-20">
+<main class="min-h-svh select-none overflow-hidden px-4 pt-16 md:px-6 md:pt-20">
   <div class="hidden h-[calc(100dvh-6rem)] gap-6 md:flex">
     <aside
-      class="flex h-full flex-[0_0_320px] flex-col overflow-hidden rounded-2xl border border-black/10 bg-black/5 backdrop-blur-sm md:max-w-[270px] lg:min-w-80 dark:border-[#333] dark:bg-[#1f1f1f57]"
+      class="flex h-full flex-[0_0_320px] flex-col overflow-hidden rounded-2xl border border-black/10 bg-[#f4f5fa] backdrop-blur-sm md:max-w-[270px] lg:min-w-80 dark:border-[#333] dark:bg-[#1f1f1f57]"
     >
       <div class="flex-1 space-y-4 overflow-y-auto p-3">
         <IconSelector />
@@ -30,7 +30,7 @@
     </section>
 
     <aside
-      class="flex h-full flex-[0_0_320px] flex-col overflow-hidden rounded-2xl border border-black/10 bg-black/5 backdrop-blur-sm md:max-w-[270px] lg:min-w-80 dark:border-[#333] dark:bg-[#1f1f1f57]"
+      class="flex h-full flex-[0_0_320px] flex-col overflow-hidden rounded-2xl border border-black/10 bg-[#f4f5fa] backdrop-blur-sm md:max-w-[270px] lg:min-w-80 dark:border-[#333] dark:bg-[#1f1f1f57]"
     >
       <div class="flex-1 space-y-4 overflow-y-auto p-3">
         <BackgroundOptions />
@@ -46,7 +46,7 @@
     </section>
 
     <aside
-      class="flex flex-1 flex-col overflow-hidden rounded-t-2xl border border-black/10 bg-black/5 backdrop-blur-sm dark:border-[#333] dark:bg-[#1f1f1f57]"
+      class="flex flex-1 flex-col overflow-hidden rounded-t-2xl border border-black/10 bg-[#f4f5fa] backdrop-blur-sm dark:border-[#333] dark:bg-[#1f1f1f57]"
     >
       <div class="{activeAside === 'icon' ? 'flex' : 'hidden'} h-full flex-col overflow-hidden">
         <div class="flex-1 space-y-4 overflow-y-auto p-6">
@@ -67,7 +67,7 @@
     </aside>
 
     <nav
-      class="flex gap-2 rounded-t-2xl border-t border-black/10 bg-black/5 p-2 backdrop-blur-sm dark:border-[#333] dark:bg-[#1f1f1f57]"
+      class="flex gap-2 rounded-t-2xl border-t border-black/10 bg-[#f4f5fa] p-2 backdrop-blur-sm dark:border-[#333] dark:bg-[#1f1f1f57]"
     >
       <Button
         variant="glass"

@@ -30,7 +30,7 @@
           type="color"
           bind:value={$iconColor}
           oninput={(e) => debouncedUpdateIconColor(e.currentTarget.value)}
-          class="h-10 w-14 flex-shrink-0 cursor-pointer rounded-xl border border-black/10 bg-transparent transition-colors hover:border-black/20 dark:border-[#333] dark:hover:border-white/30"
+          class="h-10 w-10 flex-shrink-0 cursor-pointer appearance-none rounded-full border border-black/10 bg-transparent p-0 transition-colors hover:border-black/20 dark:border-[#333] dark:hover:border-white/30 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-none"
         />
         <Input
           type="text"

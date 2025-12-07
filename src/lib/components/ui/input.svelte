@@ -154,11 +154,11 @@
       />
 
       <div
-        class="relative h-6 w-11 rounded-full border border-black/10 bg-gray-100/5 backdrop-blur-sm transition-all duration-200 peer-checked:border-gray-400/20 peer-checked:bg-gray-300/10 peer-focus-visible:ring-1 peer-focus-visible:ring-black/20 peer-focus-visible:ring-offset-1 peer-focus-visible:ring-offset-white dark:border-[#333] dark:bg-[#1f1f1f57] dark:peer-checked:border-white/30 dark:peer-checked:bg-white/10 dark:peer-focus-visible:ring-white/20 dark:peer-focus-visible:ring-offset-zinc-900"
+        class="relative h-6 w-11 rounded-full border border-transparent bg-gray-200 transition-all duration-200 peer-checked:bg-black peer-focus-visible:ring-1 peer-focus-visible:ring-black/20 peer-focus-visible:ring-offset-1 peer-focus-visible:ring-offset-white dark:border-[#333] dark:bg-[#1f1f1f57] dark:peer-checked:border-white/30 dark:peer-checked:bg-white/10 dark:peer-focus-visible:ring-white/20 dark:peer-focus-visible:ring-offset-zinc-900"
       ></div>
 
       <div
-        class="absolute left-[2px] top-[2px] h-5 w-5 rounded-full bg-gradient-to-br from-zinc-500 to-zinc-600 shadow-sm transition-all duration-200 ease-out peer-checked:translate-x-5 peer-checked:from-black peer-checked:via-zinc-900 peer-checked:to-zinc-800 dark:from-zinc-200 dark:via-zinc-300 dark:to-zinc-400 dark:peer-checked:from-white dark:peer-checked:via-gray-100 dark:peer-checked:to-gray-200"
+        class="absolute left-[2px] top-[2px] h-5 w-5 rounded-full bg-white shadow-sm transition-all duration-200 ease-out peer-checked:translate-x-5 dark:bg-gradient-to-br dark:from-zinc-200 dark:via-zinc-300 dark:to-zinc-400 dark:peer-checked:from-white dark:peer-checked:via-gray-100 dark:peer-checked:to-gray-200"
       >
         <div
           class="absolute inset-[1px] rounded-full bg-gradient-to-br from-white/40 to-transparent"
