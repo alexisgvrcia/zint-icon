@@ -118,7 +118,7 @@
             title={iconName}
             class={cn(
               'group flex flex-col items-center justify-center p-3',
-              $selectedIcon === iconName ? '!border-white/30 !bg-white/10' : ''
+              $selectedIcon === iconName ? '!border-black !bg-black/15 dark:!border-white dark:!bg-white/20' : ''
             )}
           >
             <div
@@ -126,7 +126,7 @@
                 'h-8 w-8 transition-colors [&>svg]:h-full [&>svg]:w-full',
                 $selectedIcon === iconName
                   ? ' dark:text-white [&>svg]:stroke-black dark:[&>svg]:stroke-white'
-                  : ' dark:text-gray-400 dark:group-hover:text-gray-300 [&>svg]:stroke-gray-700 dark:[&>svg]:stroke-gray-400 dark:group-hover:[&>svg]:stroke-gray-300'
+                  : ' dark:text-white dark:group-hover:text-white [&>svg]:stroke-black dark:[&>svg]:stroke-white dark:group-hover:[&>svg]:stroke-white'
               )}
             >
               {#if iconName === 'Custom'}
