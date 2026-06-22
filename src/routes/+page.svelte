@@ -13,7 +13,7 @@
 <Header />
 
 <main class="min-h-svh select-none overflow-hidden px-4 pt-16 md:px-6 md:pt-20">
-  <div class="hidden h-[calc(100dvh-6rem)] gap-6 md:flex">
+  <div class="hidden h-[calc(100svh-6rem)] gap-6 md:flex">
     <aside
       class="flex h-full flex-[0_0_320px] flex-col overflow-hidden rounded-2xl border border-black/10 bg-[#f4f5fa] backdrop-blur-sm md:max-w-[270px] lg:min-w-80 dark:border-[#333] dark:bg-[#1f1f1f57]"
     >

@@ -147,7 +147,7 @@
     </div>
 
     <div class="flex items-center gap-2 sm:gap-1.5">
-      <a href="https://github.com/gvrciary/zint-icon" target="_blank" rel="noreferrer">
+      <a href="https://github.com/alexisgvrcia/zint-icon" target="_blank" rel="noreferrer">
         <Button variant="glass" size="md" title="Github">
           <svg
             width="1024"
