@@ -95,19 +95,19 @@
       <h2 class="text-sm font-medium text-gray-700 dark:text-gray-300">Background Palette</h2>
       <div class="flex gap-2">
         <Button
-          variant="glass"
+          variant="glass-icon"
           size="sm"
           onclick={refreshMeshPositions}
-          class="dark:hover:!bg-white/8 !border-transparent !bg-transparent hover:!bg-black/5"
+          class="dark:hover:!bg-white/8 h-9 w-9 !border-transparent !bg-transparent hover:!bg-black/5"
         >
           <RefreshCw class="h-3 w-3" />
         </Button>
         {#if $meshGradientColors.length < 6}
           <Button
-            variant="glass"
+            variant="glass-icon"
             size="sm"
             onclick={addMeshGradientColor}
-            class="dark:hover:!bg-white/8 !border-transparent !bg-transparent hover:!bg-black/5"
+            class="dark:hover:!bg-white/8 h-9 w-9 !border-transparent !bg-transparent hover:!bg-black/5"
           >
             <Plus class="h-3 w-3" />
           </Button>
@@ -149,7 +149,7 @@
 
           {#if $meshGradientColors.length > 1}
             <Button
-              variant="glass"
+              variant="glass-icon"
               size="sm"
               onclick={() => removeMeshGradientColor(index)}
               class="hover:!bg-red-500/18 dark:hover:!bg-red-500/16 h-7 w-7 flex-shrink-0 rounded-[8px] !border-transparent !bg-transparent !p-0"
