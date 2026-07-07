@@ -10,8 +10,8 @@
     customContentType
   } from '$lib/stores/icon';
   import ColorField from '$lib/components/ui/color-field.svelte';
-  import Input from '$lib/components/ui/input.svelte';
   import Slider from '$lib/components/ui/slider.svelte';
+  import Switch from '$lib/components/ui/switch.svelte';
   import { debounce } from '$lib/utils/debounce';
 
   function updateIconColor(color: string) {
@@ -60,11 +60,11 @@
 
   {#if !($selectedIcon === 'Custom' && $customContentType === 'png')}
     <div class="hidden xl:block">
-      <Input type="checkbox" bind:value={$iconGlass} label="Glass Effect" />
+      <Switch bind:value={$iconGlass} label="Glass Effect" />
     </div>
 
     <div class="hidden xl:block">
-      <Input type="checkbox" bind:value={$iconGlow} label="Glow Effect" />
+      <Switch bind:value={$iconGlow} label="Glow Effect" />
     </div>
   {/if}
 </div>

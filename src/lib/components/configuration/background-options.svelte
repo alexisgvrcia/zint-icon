@@ -7,7 +7,7 @@
   import { colorPalette } from '$lib/constants';
   import ColorField from '$lib/components/ui/color-field.svelte';
   import Slider from '$lib/components/ui/slider.svelte';
-  import Input from '$lib/components/ui/input.svelte';
+  import Switch from '$lib/components/ui/switch.svelte';
   import {
     noise,
     borderRadius,
@@ -240,7 +240,7 @@
     />
   {/if}
 
-  <Input type="checkbox" bind:value={$background3D} label="3D Effect" />
+  <Switch bind:value={$background3D} label="3D Effect" />
 
   {#if $background3D}
     <Slider
