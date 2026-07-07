@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { flip } from 'svelte/animate';
+  import { cubicOut } from 'svelte/easing';
+  import { slide } from 'svelte/transition';
   import { Plus, Minus, RefreshCw } from 'lucide-svelte';
   import Button from '$lib/components/ui/button.svelte';
   import Slider from '$lib/components/ui/slider.svelte';
@@ -16,7 +19,7 @@
     saturation,
     brightness
   } from '$lib/stores/icon';
-  import { generateRandomPosition } from '$lib/utils';
+  import { createMeshGradientColor, generateRandomPosition } from '$lib/utils';
   import { debounce } from '$lib/utils/debounce';
 
   function updateNoise(value: number) {
@@ -50,8 +53,7 @@
   const debouncedUpdateMeshGradientColor = debounce(updateMeshGradientColor, 150);
 
   function addMeshGradientColor() {
-    const { x, y } = generateRandomPosition();
-    meshGradientColors.set([...$meshGradientColors, { color: '#8564FA', x, y }]);
+    meshGradientColors.set([...$meshGradientColors, createMeshGradientColor('#8564FA')]);
   }
 
   function refreshMeshPositions() {
@@ -104,10 +106,13 @@
       </div>
     </div>
 
-    <div class="max-h-80 space-y-2 overflow-y-auto">
-      {#each $meshGradientColors as meshColor, index (index)}
+    <div class="space-y-2 overflow-hidden">
+      {#each $meshGradientColors as meshColor, index (meshColor.id)}
         <div
-          class="flex items-center justify-between gap-3 rounded-xl border border-black/20 bg-white/5 p-3 backdrop-blur-sm dark:border-[#333] dark:bg-black/5"
+          animate:flip={{ duration: 220, easing: cubicOut }}
+          in:slide={{ duration: 220, easing: cubicOut }}
+          out:slide={{ duration: 220, easing: cubicOut }}
+          class="flex items-center justify-between gap-3 overflow-hidden rounded-xl border border-black/20 bg-white/5 p-3 backdrop-blur-sm dark:border-[#333] dark:bg-black/5"
         >
           <div class="flex min-w-0 flex-1 items-center gap-3">
             <input

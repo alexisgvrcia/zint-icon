@@ -3,6 +3,13 @@ export interface GradientStop {
   position: number;
 }
 
+export interface MeshGradientColor {
+  id: string;
+  color: string;
+  x: number;
+  y: number;
+}
+
 export interface ProcessedSvgOptions {
   iconGlow: boolean;
   iconGlass: boolean;

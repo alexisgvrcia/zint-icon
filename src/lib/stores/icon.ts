@@ -1,9 +1,10 @@
 import { writable, type Writable } from 'svelte/store';
 import { getRandomIcon } from '$lib/data/icons';
+import type { MeshGradientColor } from '$lib/types';
 import { generateRandomMeshColors } from '$lib/utils';
 
 export const selectedIcon: Writable<string> = writable(getRandomIcon());
-export const meshGradientColors: Writable<{ color: string; x: number; y: number }[]> = writable(
+export const meshGradientColors: Writable<MeshGradientColor[]> = writable(
   generateRandomMeshColors()
 );
 export const iconColor: Writable<string> = writable('#ffffff');

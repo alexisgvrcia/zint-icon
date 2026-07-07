@@ -169,11 +169,11 @@
 {:else}
   <div class="group relative">
     <div
-      class="relative overflow-hidden rounded-2xl border border-black/10 bg-gray-100/5 p-[1px] backdrop-blur-sm transition-all duration-200 group-focus-within:border-gray-400/20 group-focus-within:bg-gray-300/10 dark:border-[#333] dark:bg-[#1f1f1f57] dark:group-focus-within:border-white/30 dark:group-focus-within:bg-white/5"
+      class="relative overflow-hidden rounded-[13px] border border-black/10 bg-gray-100/5 p-[1px] backdrop-blur-sm transition-all duration-200 group-focus-within:border-gray-400/20 group-focus-within:bg-gray-300/10 dark:border-[#333] dark:bg-[#1f1f1f57] dark:group-focus-within:border-white/30 dark:group-focus-within:bg-white/5"
     >
-      <div class="relative overflow-hidden rounded-[15px] bg-transparent">
+      <div class="relative overflow-hidden rounded-[12px] bg-transparent">
         <div
-          class="group-focus-within:via-black/3 dark:group-focus-within:via-white/3 absolute inset-0 rounded-[15px] bg-gradient-to-br from-gray-200/10 via-gray-300/5 to-gray-400/10 group-focus-within:from-black/5 group-focus-within:to-black/5 dark:from-zinc-600/10 dark:via-zinc-700/5 dark:to-zinc-800/10 dark:group-focus-within:from-white/5 dark:group-focus-within:to-white/5"
+          class="group-focus-within:via-black/3 dark:group-focus-within:via-white/3 absolute inset-0 rounded-[12px] bg-gradient-to-br from-gray-200/10 via-gray-300/5 to-gray-400/10 group-focus-within:from-black/5 group-focus-within:to-black/5 dark:from-zinc-600/10 dark:via-zinc-700/5 dark:to-zinc-800/10 dark:group-focus-within:from-white/5 dark:group-focus-within:to-white/5"
         ></div>
 
         <input
@@ -190,7 +190,7 @@
           {onfocus}
           {onblur}
           class={cn(
-            'relative z-10 w-full bg-transparent px-4 py-3 text-sm font-medium text-gray-800 transition-all duration-200 placeholder:text-gray-400 dark:text-gray-200 dark:placeholder:text-gray-500',
+            'relative z-10 h-9 w-full bg-transparent px-4 text-sm font-medium text-gray-800 transition-all duration-200 placeholder:text-gray-400 dark:text-gray-200 dark:placeholder:text-gray-500',
             'focus:outline-none focus:ring-0',
             'disabled:cursor-not-allowed disabled:opacity-50',
             'autofill:bg-transparent autofill:text-gray-800 dark:autofill:text-gray-200',
@@ -199,13 +199,13 @@
         />
 
         <div
-          class="pointer-events-none absolute inset-0 rounded-[15px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"
+          class="pointer-events-none absolute inset-0 rounded-[12px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"
         ></div>
       </div>
     </div>
 
     <div
-      class="pointer-events-none absolute inset-0 rounded-2xl opacity-0 ring-1 ring-black/30 ring-offset-1 ring-offset-transparent transition-opacity duration-200 group-focus-within:opacity-100 dark:ring-white/30"
+      class="pointer-events-none absolute inset-0 rounded-[13px] opacity-0 ring-1 ring-black/30 ring-offset-1 ring-offset-transparent transition-opacity duration-200 group-focus-within:opacity-100 dark:ring-white/30"
     ></div>
   </div>
 {/if}

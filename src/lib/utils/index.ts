@@ -1,6 +1,9 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { colorPalette } from '$lib/constants';
+import type { MeshGradientColor } from '$lib/types';
+
+let meshGradientColorId = 0;
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -13,15 +16,23 @@ export function generateRandomPosition() {
   };
 }
 
-export function generateRandomMeshColors(): { color: string; x: number; y: number }[] {
-  const meshColors: { color: string; x: number; y: number }[] = [];
+export function createMeshGradientColor(
+  color: string,
+  position = generateRandomPosition()
+): MeshGradientColor {
+  return {
+    id: `mesh-color-${meshGradientColorId++}`,
+    color,
+    ...position
+  };
+}
+
+export function generateRandomMeshColors(): MeshGradientColor[] {
+  const meshColors: MeshGradientColor[] = [];
 
   for (let i = 0; i < 3; i++) {
     const randomIndex = Math.floor(Math.random() * colorPalette.length);
-    meshColors.push({
-      color: colorPalette[randomIndex],
-      ...generateRandomPosition()
-    });
+    meshColors.push(createMeshGradientColor(colorPalette[randomIndex]));
   }
 
   return meshColors;

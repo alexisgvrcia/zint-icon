@@ -1,4 +1,5 @@
 import { createShaderProgram } from './shader';
+import type { MeshGradientColor } from '$lib/types';
 import { hexToRgb } from '$lib/utils/webgl';
 import { toast } from 'svelte-sonner';
 
@@ -7,7 +8,7 @@ export function initRender(
   vertexSrc: string,
   fragmentSrc: string,
   options: {
-    meshGradientColors: { color: string; x: number; y: number }[];
+    meshGradientColors: MeshGradientColor[];
     noise: number;
     contrast: number;
     saturation: number;
