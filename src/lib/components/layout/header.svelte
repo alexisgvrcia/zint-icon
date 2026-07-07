@@ -1,11 +1,13 @@
 <script lang="ts">
   import { Download, ChevronDown } from 'lucide-svelte';
+  import { cubicOut } from 'svelte/easing';
   import Button from '$lib/components/ui/button.svelte';
   import CopyButton from '$lib/components/ui/copy-button.svelte';
   import Input from '$lib/components/ui/input.svelte';
   import ThemeToggle from '$lib/components/ui/theme-toggle.svelte';
   import { downloadResolution } from '$lib/stores/icon';
   import { onMount } from 'svelte';
+  import { scale } from 'svelte/transition';
   import { createICOFile, generateImageDataFromSVG } from '$lib/parser/ico';
   import { toast } from 'svelte-sonner';
   import { getCompleteSVG } from '$lib/parser/svg';
@@ -29,6 +31,15 @@
 
   function toggleDownloadDropdown() {
     isDownloadDropdownOpen = !isDownloadDropdownOpen;
+  }
+
+  function dropdownTransition(node: Element) {
+    return scale(node, {
+      duration: 140,
+      start: 0.96,
+      opacity: 0,
+      easing: cubicOut
+    });
   }
 
   let svgContent = $state('');
@@ -181,6 +192,7 @@
 
         {#if isDownloadDropdownOpen}
           <div
+            transition:dropdownTransition
             class="absolute right-0 top-full z-50 mt-2 w-56 overflow-hidden rounded-2xl border border-black/10 bg-black/5 shadow-2xl backdrop-blur-md sm:w-52 dark:border-[#333] dark:bg-[#1f1f1f57]"
           >
             <div

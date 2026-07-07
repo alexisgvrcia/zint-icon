@@ -1,4 +1,5 @@
 <script lang="ts">
+  import NumberFlow from '@number-flow/svelte';
   import { cn } from '$lib/utils';
 
   interface Props {
@@ -29,9 +30,12 @@
   let isActive = $state(false);
 
   const decimals = $derived((step.toString().split('.')[1] ?? '').length);
+  const numberFormat = $derived({
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals
+  });
   const range = $derived(Math.max(max - min, step || 1));
   const percentage = $derived(Math.max(0, Math.min(100, ((value - min) / range) * 100)));
-  const displayValue = $derived(decimals ? value.toFixed(decimals) : `${Math.round(value)}`);
   const totalSteps = $derived((max - min) / step);
 
   const marks = $derived.by(() => {
@@ -111,7 +115,7 @@
           isActive && 'text-black dark:text-white'
         )}
       >
-        {displayValue}
+        <NumberFlow {value} format={numberFormat} respectMotionPreference={true} />
       </span>
     {/if}
 
