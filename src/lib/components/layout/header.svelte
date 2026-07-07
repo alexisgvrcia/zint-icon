@@ -15,6 +15,8 @@
 
   let isDownloadDropdownOpen = $state(false);
   let dropdownRef: HTMLDivElement;
+  const headerButtonClass =
+    '!border-black/12 !bg-[#eeeff3] !text-black/72 !backdrop-blur-none shadow-none hover:!border-black/16 hover:!bg-[#e9ebf1] hover:!text-black focus-visible:!border-black/18 focus-visible:!bg-[#e7e9ef] dark:!border-white/12 dark:!bg-[#2b2b2b] dark:!text-white/84 dark:hover:!border-white/16 dark:hover:!bg-[#303030] dark:hover:!text-white dark:focus-visible:!border-white/18 dark:focus-visible:!bg-[#313131]';
 
   onMount(() => {
     function handleClickOutside(event: Event) {
@@ -159,7 +161,7 @@
 
     <div class="flex items-center gap-2 sm:gap-1.5">
       <a href="https://github.com/alexisgvrcia/zint-icon" target="_blank" rel="noreferrer">
-        <Button variant="glass" size="md" title="Github">
+        <Button variant="glass" size="md" title="Github" class={headerButtonClass}>
           <svg
             width="1024"
             height="1024"
@@ -176,11 +178,17 @@
           >
         </Button>
       </a>
-      <ThemeToggle />
-      <CopyButton text={svgContent} />
+      <ThemeToggle class={headerButtonClass} />
+      <CopyButton text={svgContent} class={headerButtonClass} />
 
       <div class="relative" bind:this={dropdownRef}>
-        <Button variant="glass" size="md" onclick={toggleDownloadDropdown} title="Download">
+        <Button
+          variant="glass"
+          size="md"
+          onclick={toggleDownloadDropdown}
+          title="Download"
+          class={headerButtonClass}
+        >
           <Download class="h-4 w-4 sm:h-3 sm:w-3" />
           <ChevronDown
             class={cn(
@@ -193,7 +201,7 @@
         {#if isDownloadDropdownOpen}
           <div
             transition:dropdownTransition
-            class="absolute right-0 top-full z-50 mt-2 w-56 overflow-hidden rounded-2xl border border-black/10 bg-black/5 shadow-2xl backdrop-blur-md sm:w-52 dark:border-[#333] dark:bg-[#1f1f1f57]"
+            class="absolute right-0 top-full z-50 mt-2 w-56 overflow-hidden rounded-2xl border border-black/12 bg-[#eeeff3] shadow-2xl sm:w-52 dark:border-white/12 dark:bg-[#2b2b2b]"
           >
             <div
               class="flex items-center justify-between gap-3 px-4 py-3 transition-colors hover:bg-black/5 dark:hover:bg-white/5"
