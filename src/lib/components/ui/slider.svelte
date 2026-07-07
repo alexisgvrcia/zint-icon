@@ -65,7 +65,7 @@
 <div class={cn('relative h-9', className)} {...restProps}>
   <div
     class={cn(
-      'border-black/8 dark:border-white/8 group absolute inset-0 select-none overflow-hidden rounded-[13px] border bg-[#eeeff3] transition-[border-color,box-shadow,background-color] duration-75 dark:bg-[#2b2b2b]',
+      'border-black/8 dark:border-white/8 group absolute inset-0 select-none overflow-hidden rounded-[12px] border bg-[#eeeff3] transition-[border-color,box-shadow,background-color] duration-75 dark:bg-[#2b2b2b]',
       disabled
         ? 'opacity-50'
         : 'hover:border-black/12 dark:hover:border-white/12 shadow-[0_1px_2px_rgba(15,23,42,0.04)] hover:bg-[#e9ebf1] dark:shadow-[0_1px_2px_rgba(0,0,0,0.2)] dark:hover:bg-[#303030]',
