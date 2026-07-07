@@ -16,7 +16,7 @@
   let isDownloadDropdownOpen = $state(false);
   let dropdownRef: HTMLDivElement;
   const headerButtonClass =
-    '!border-black/12 !bg-[#eeeff3] !text-black/72 !backdrop-blur-none shadow-none hover:!border-black/16 hover:!bg-[#e9ebf1] hover:!text-black focus-visible:!border-black/18 focus-visible:!bg-[#e7e9ef] dark:!border-white/12 dark:!bg-[#2b2b2b] dark:!text-white/84 dark:hover:!border-white/16 dark:hover:!bg-[#303030] dark:hover:!text-white dark:focus-visible:!border-white/18 dark:focus-visible:!bg-[#313131]';
+    'px-3 py-2 sm:px-6 sm:py-3 !border-black/12 !bg-[#eeeff3] !text-black/72 !backdrop-blur-none shadow-none hover:!border-black/16 hover:!bg-[#e9ebf1] hover:!text-black focus-visible:!border-black/18 focus-visible:!bg-[#e7e9ef] dark:!border-white/12 dark:!bg-[#2b2b2b] dark:!text-white/84 dark:hover:!border-white/16 dark:hover:!bg-[#303030] dark:hover:!text-white dark:focus-visible:!border-white/18 dark:focus-visible:!bg-[#313131]';
 
   onMount(() => {
     function handleClickOutside(event: Event) {
@@ -143,10 +143,10 @@
   }
 </script>
 
-<header class="fixed left-0 right-0 top-0 z-50 px-4 py-3 transition-all duration-300">
-  <nav class="flex items-center justify-between px-4 py-3">
-    <div class="group flex items-center space-x-3">
-      <div class="relative h-8 w-8 overflow-hidden">
+<header class="fixed left-0 right-0 top-0 z-50 px-3 py-2 transition-all duration-300 sm:px-4 sm:py-3">
+  <nav class="flex items-center justify-between gap-3 px-2 py-2 sm:px-4 sm:py-3">
+    <div class="group flex items-center space-x-2 sm:space-x-3">
+      <div class="relative h-7 w-7 overflow-hidden sm:h-8 sm:w-8">
         <img src="/icon.svg" alt="Zin Icon Logo" class="h-full w-full object-cover" />
       </div>
       <div class="hidden items-center gap-2 md:flex">
@@ -159,7 +159,7 @@
       </div>
     </div>
 
-    <div class="flex items-center gap-2 sm:gap-1.5">
+    <div class="flex items-center gap-1.5 sm:gap-2">
       <a href="https://github.com/alexisgvrcia/zint-icon" target="_blank" rel="noreferrer">
         <Button variant="glass" size="md" title="Github" class={headerButtonClass}>
           <svg
