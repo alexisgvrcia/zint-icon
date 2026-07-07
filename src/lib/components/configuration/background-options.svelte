@@ -4,6 +4,7 @@
   import { slide } from 'svelte/transition';
   import { Plus, Minus, RefreshCw } from 'lucide-svelte';
   import Button from '$lib/components/ui/button.svelte';
+  import { colorPalette } from '$lib/constants';
   import ColorField from '$lib/components/ui/color-field.svelte';
   import Slider from '$lib/components/ui/slider.svelte';
   import Input from '$lib/components/ui/input.svelte';
@@ -53,8 +54,16 @@
 
   const debouncedUpdateMeshGradientColor = debounce(updateMeshGradientColor, 150);
 
+  function getRandomPaletteColor() {
+    const usedColors = new Set($meshGradientColors.map((item) => item.color));
+    const availableColors = colorPalette.filter((color) => !usedColors.has(color));
+    const colors = availableColors.length > 0 ? availableColors : colorPalette;
+
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
   function addMeshGradientColor() {
-    meshGradientColors.set([...$meshGradientColors, createMeshGradientColor('#8564FA')]);
+    meshGradientColors.set([...$meshGradientColors, createMeshGradientColor(getRandomPaletteColor())]);
   }
 
   function refreshMeshPositions() {

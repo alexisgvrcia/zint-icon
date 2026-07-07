@@ -29,6 +29,16 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  ::selection {
+    color: var(--color-background);
+    background: var(--color-foreground);
+  }
+
+  ::-moz-selection {
+    color: var(--color-background);
+    background: var(--color-foreground);
+  }
+
   * {
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
