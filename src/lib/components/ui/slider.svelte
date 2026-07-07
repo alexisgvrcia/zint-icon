@@ -26,53 +26,96 @@
     ...restProps
   }: Props = $props();
 
-  let sliderRef: HTMLInputElement;
-  let animationId: number | null = null;
+  let isActive = $state(false);
 
-  function handleInput(event: Event) {
-    const target = event.target as HTMLInputElement;
-    const newValue = parseFloat(target.value);
-    value = newValue;
+  const decimals = $derived((step.toString().split('.')[1] ?? '').length);
+  const range = $derived(Math.max(max - min, step || 1));
+  const percentage = $derived(Math.max(0, Math.min(100, ((value - min) / range) * 100)));
+  const displayValue = $derived(decimals ? value.toFixed(decimals) : `${Math.round(value)}`);
+  const totalSteps = $derived((max - min) / step);
 
-    if (animationId) {
-      cancelAnimationFrame(animationId);
+  const marks = $derived.by(() => {
+    if (totalSteps <= 10) {
+      return Array.from({ length: Math.max(totalSteps - 1, 0) }, (_, index) => ({
+        key: `d-${index + 1}`,
+        left: (((index + 1) * step) / (max - min)) * 100
+      }));
     }
 
-    animationId = requestAnimationFrame(() => {
-      onChange?.(newValue);
-      animationId = null;
-    });
+    return Array.from({ length: 9 }, (_, index) => ({
+      key: `t-${index + 1}`,
+      left: (index + 1) * 10
+    }));
+  });
+
+  function handleInput(event: Event & { currentTarget: HTMLInputElement }) {
+    value = Number(event.currentTarget.value);
+    onChange?.(value);
   }
 
-  const percentage = $derived(((value - min) / (max - min)) * 100);
+  function setActive(state: boolean) {
+    if (!disabled) isActive = state;
+  }
 </script>
 
-<div class={cn('space-y-3', className)} {...restProps}>
-  <div class="flex items-center justify-between">
-    {#if label}
-      <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{label}</span>
-    {/if}
-    {#if showValue}
-      <span class="text-sm font-medium text-gray-500 dark:text-gray-400">{Math.round(value)}</span>
-    {/if}
-  </div>
-
-  <div class="relative">
+<div class={cn('relative h-9', className)} {...restProps}>
+  <div
+    class={cn(
+      'border-black/8 dark:border-white/8 group absolute inset-0 select-none overflow-hidden rounded-[13px] border bg-[#eeeff3] transition-[border-color,box-shadow,background-color] duration-75 dark:bg-[#2b2b2b]',
+      disabled
+        ? 'opacity-50'
+        : 'hover:border-black/12 dark:hover:border-white/12 shadow-[0_1px_2px_rgba(15,23,42,0.04)] hover:bg-[#e9ebf1] dark:shadow-[0_1px_2px_rgba(0,0,0,0.2)] dark:hover:bg-[#303030]',
+      isActive && 'border-black/14 dark:border-white/14 bg-[#e7e9ef] dark:bg-[#313131]'
+    )}
+  >
     <div
-      class="relative h-3 overflow-hidden rounded-full border border-black/10 bg-black/5 backdrop-blur-sm dark:border-[#333] dark:bg-[#1f1f1f57]"
-    >
-      <div
-        class="absolute left-0 top-0 h-full rounded-full bg-gradient-to-r from-black/80 via-black/90 to-black/70 transition-all duration-200 ease-out dark:from-white/80 dark:via-white/90 dark:to-white/70"
-        style="width: {percentage}%"
-      >
+      class={cn(
+        'pointer-events-none absolute inset-y-0 left-0 bg-[#d8dbe3] transition-[width,background-color] hover:bg-[#d1d6df] dark:bg-[#525252] dark:hover:bg-[#5a5a5a]',
+        isActive ? 'bg-[#d1d6df] duration-0 dark:bg-[#5a5a5a]' : 'duration-75'
+      )}
+      style={`width:${percentage}%`}
+    ></div>
+
+    <div class="pointer-events-none absolute inset-0">
+      {#each marks as mark (mark.key)}
         <div
-          class="absolute inset-0 rounded-full bg-gradient-to-r from-black/10 via-black/5 to-transparent dark:from-white/20 dark:via-white/10 dark:to-transparent"
+          class={cn(
+            'bg-black/14 dark:bg-white/14 absolute top-1/2 h-3.5 w-px -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 transition-[opacity,background-color] duration-75 group-hover:opacity-100',
+            isActive && 'bg-black/18 opacity-100 dark:bg-white/20'
+          )}
+          style:left={`${mark.left}%`}
         ></div>
-      </div>
+      {/each}
     </div>
 
+    <div
+      class={cn(
+        'bg-black/38 dark:bg-white/58 h-4.5 pointer-events-none absolute top-1/2 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full transition-[left,height,background-color]',
+        isActive ? 'bg-black/56 dark:bg-white/72 h-5.5 duration-0' : 'duration-75'
+      )}
+      style={`left:max(7px, min(calc(${percentage}% - 2px), calc(100% - 7px)))`}
+    ></div>
+
+    {#if label}
+      <span
+        class="text-black/62 dark:text-white/78 pointer-events-none absolute left-[12px] top-1/2 inline-flex -translate-y-1/2 items-center text-[14px] font-medium tracking-[-0.03em] transition-colors duration-75"
+      >
+        {label}
+      </span>
+    {/if}
+
+    {#if showValue}
+      <span
+        class={cn(
+          'text-black/82 dark:text-white/92 pointer-events-none absolute right-[12px] top-1/2 -translate-y-1/2 text-[14px] font-[Geist_Mono,monospace] font-medium tabular-nums tracking-[-0.04em] transition-colors duration-75',
+          isActive && 'text-black dark:text-white'
+        )}
+      >
+        {displayValue}
+      </span>
+    {/if}
+
     <input
-      bind:this={sliderRef}
       type="range"
       {min}
       {max}
@@ -80,8 +123,12 @@
       {disabled}
       bind:value
       oninput={handleInput}
-      class="absolute inset-0 h-3 w-full cursor-pointer opacity-0 disabled:cursor-not-allowed"
-      style="will-change: transform;"
+      onpointerdown={() => setActive(true)}
+      onpointerup={() => setActive(false)}
+      onpointercancel={() => setActive(false)}
+      onblur={() => setActive(false)}
+      onfocus={() => setActive(true)}
+      class="absolute inset-0 h-full w-full cursor-pointer opacity-0 disabled:cursor-not-allowed"
     />
   </div>
 </div>
@@ -96,66 +143,36 @@
   input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #374151, #6b7280);
+    width: 24px;
+    height: 44px;
     cursor: pointer;
-    border: 2px solid rgba(55, 65, 81, 0.8);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    position: relative;
-    z-index: 10;
-  }
-
-  .dark input[type='range']::-webkit-slider-thumb {
-    background: linear-gradient(135deg, #ffffff, #e5e7eb);
-    border: 2px solid rgba(255, 255, 255, 0.8);
   }
 
   input[type='range']::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #374151, #6b7280);
+    width: 24px;
+    height: 44px;
     cursor: pointer;
-    border: 2px solid rgba(55, 65, 81, 0.8);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    box-sizing: border-box;
+    border: 0;
+    background: transparent;
   }
 
-  .dark input[type='range']::-moz-range-thumb {
-    background: linear-gradient(135deg, #ffffff, #e5e7eb);
-    border: 2px solid rgba(255, 255, 255, 0.8);
+  input[type='range']::-webkit-slider-runnable-track {
+    background: transparent;
   }
 
   input[type='range']::-moz-range-track {
     background: transparent;
-    border: none;
-    height: 12px;
-  }
-
-  input[type='range']::-webkit-slider-track {
-    background: transparent;
-    border: none;
-    height: 12px;
-  }
-
-  input[type='range']:disabled {
-    opacity: 0.5;
-  }
-
-  input[type='range']:disabled::-webkit-slider-thumb,
-  input[type='range']:disabled::-moz-range-thumb {
-    background: rgb(113 113 122);
-    cursor: not-allowed;
   }
 
   input[type='range']:focus {
     outline: none;
   }
 
-  input[type='range']:focus-visible {
-    outline: 2px solid rgba(255, 255, 255, 0.3);
-    outline-offset: 2px;
+  @media (prefers-reduced-motion: reduce) {
+    input[type='range'],
+    div,
+    span {
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>
