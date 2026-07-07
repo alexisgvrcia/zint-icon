@@ -75,7 +75,7 @@
           size="sm"
           onclick={selectRandomIcon}
           title="Random Icon"
-          class="h-9 w-9"
+          class="h-9 w-9 !border-transparent !bg-transparent hover:!bg-black/5 dark:hover:!bg-white/8"
         >
           <ShuffleIcon class="h-4 w-4" />
         </Button>
@@ -85,7 +85,7 @@
           size="sm"
           onclick={() => fileInput.click()}
           title="Upload Icon"
-          class="h-9 w-9"
+          class="h-9 w-9 !border-transparent !bg-transparent hover:!bg-black/5 dark:hover:!bg-white/8"
         >
           <Upload class="h-4 w-4" />
         </Button>
@@ -117,9 +117,9 @@
 
   <div class="max-h-64 min-h-64 overflow-y-auto">
     <div
-      class="border-black/8 dark:border-white/8 overflow-hidden rounded-[14px] border bg-black/[0.015] dark:bg-white/[0.02]"
+      class="border-black/8 dark:border-white/8 overflow-hidden rounded-[14px] border bg-black/[0.06] p-px dark:bg-white/[0.08]"
     >
-      <div class="grid grid-cols-4">
+      <div class="bg-black/8 dark:bg-white/8 grid grid-cols-4 gap-px">
         {#each filteredIcons() as iconName, index (iconName)}
           <Button
             variant="glass-nav"
@@ -127,11 +127,14 @@
             onclick={() => selectedIcon.set(iconName)}
             title={iconName}
             class={cn(
-              'border-black/8 dark:border-white/8 group min-h-14 rounded-none border-0 border-b border-r bg-transparent p-0 shadow-none transition-[background-color,color,opacity] duration-100 hover:bg-black/[0.035] dark:hover:bg-white/[0.05]',
+              'group min-h-14 rounded-none border-0 bg-[#f4f5fa] p-0 shadow-none transition-[background-color,color,opacity] duration-100 hover:bg-black/[0.035] dark:bg-[#1f1f1f] dark:hover:bg-white/[0.05]',
               $selectedIcon === iconName
                 ? '!bg-black/[0.06] text-black dark:!bg-white/[0.08] dark:text-white'
                 : '',
-              (index + 1) % 4 === 0 && 'border-r-0'
+              index === 0 && 'rounded-tl-[13px]',
+              index === Math.min(3, filteredIcons().length - 1) && 'rounded-tr-[13px]',
+              index === Math.floor((filteredIcons().length - 1) / 4) * 4 && 'rounded-bl-[13px]',
+              index === filteredIcons().length - 1 && 'rounded-br-[13px]'
             )}
           >
             <div class="flex h-full w-full items-center justify-center p-3">
