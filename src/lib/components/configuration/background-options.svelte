@@ -94,11 +94,21 @@
     <div class="flex items-center justify-between gap-3 px-1">
       <h2 class="text-sm font-medium text-gray-700 dark:text-gray-300">Background Palette</h2>
       <div class="flex gap-2">
-        <Button variant="glass" size="sm" onclick={refreshMeshPositions}>
+        <Button
+          variant="glass"
+          size="sm"
+          onclick={refreshMeshPositions}
+          class="dark:hover:!bg-white/8 !border-transparent !bg-transparent hover:!bg-black/5"
+        >
           <RefreshCw class="h-3 w-3" />
         </Button>
         {#if $meshGradientColors.length < 6}
-          <Button variant="glass" size="sm" onclick={addMeshGradientColor}>
+          <Button
+            variant="glass"
+            size="sm"
+            onclick={addMeshGradientColor}
+            class="dark:hover:!bg-white/8 !border-transparent !bg-transparent hover:!bg-black/5"
+          >
             <Plus class="h-3 w-3" />
           </Button>
         {/if}

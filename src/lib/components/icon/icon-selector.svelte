@@ -75,7 +75,7 @@
           size="sm"
           onclick={selectRandomIcon}
           title="Random Icon"
-          class="h-9 w-9 !border-transparent !bg-transparent hover:!bg-black/5 dark:hover:!bg-white/8"
+          class="dark:hover:!bg-white/8 h-9 w-9 !border-transparent !bg-transparent hover:!bg-black/5"
         >
           <ShuffleIcon class="h-4 w-4" />
         </Button>
@@ -85,7 +85,7 @@
           size="sm"
           onclick={() => fileInput.click()}
           title="Upload Icon"
-          class="h-9 w-9 !border-transparent !bg-transparent hover:!bg-black/5 dark:hover:!bg-white/8"
+          class="dark:hover:!bg-white/8 h-9 w-9 !border-transparent !bg-transparent hover:!bg-black/5"
         >
           <Upload class="h-4 w-4" />
         </Button>
