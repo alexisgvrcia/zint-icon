@@ -212,10 +212,10 @@
                   type="number"
                   bind:value={$downloadResolution}
                   placeholder="512"
-                  class="h-7 w-20 pr-6 text-xs"
+                  class="w-24 pr-7 text-[13px]"
                 />
                 <span
-                  class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-gray-400"
+                  class="text-black/42 dark:text-white/34 pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-medium"
                   >px</span
                 >
               </div>
