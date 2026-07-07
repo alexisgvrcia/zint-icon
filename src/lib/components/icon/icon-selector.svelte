@@ -164,7 +164,7 @@
             class={cn(
               'group min-h-14 rounded-none border-0 bg-[#f4f5fa] p-0 shadow-none transition-[background-color,color,opacity] duration-100 hover:bg-black/[0.035] dark:bg-[#1f1f1f] dark:hover:bg-white/[0.05]',
               $selectedIcon === iconName
-                ? '!bg-black/[0.06] text-black dark:!bg-white/[0.08] dark:text-white'
+                ? '!bg-black/[0.018] text-black dark:!bg-white/[0.035] dark:text-white'
                 : '',
               index === 0 && 'rounded-tl-[13px]',
               index === Math.min(3, filteredIcons().length - 1) && 'rounded-tr-[13px]',

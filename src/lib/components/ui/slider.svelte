@@ -72,13 +72,13 @@
       isActive && 'border-black/14 dark:border-white/14 bg-[#e7e9ef] dark:bg-[#313131]'
     )}
   >
-    <div
-      class={cn(
-        'pointer-events-none absolute inset-y-0 left-0 bg-[#d8dbe3] transition-[width,background-color] hover:bg-[#d1d6df] dark:bg-[#525252] dark:hover:bg-[#5a5a5a]',
-        isActive ? 'bg-[#d1d6df] duration-0 dark:bg-[#5a5a5a]' : 'duration-75'
-      )}
-      style={`width:${percentage}%`}
-    ></div>
+      <div
+        class={cn(
+          'pointer-events-none absolute inset-y-0 left-0 bg-black/[0.055] transition-[width,background-color] dark:bg-white/[0.09]',
+          isActive ? 'bg-black/[0.075] duration-0 dark:bg-white/[0.14]' : 'duration-75'
+        )}
+        style={`width:${percentage}%`}
+      ></div>
 
     <div class="pointer-events-none absolute inset-0">
       {#each marks as mark (mark.key)}
@@ -94,8 +94,8 @@
 
     <div
       class={cn(
-        'bg-black/38 dark:bg-white/58 h-4.5 pointer-events-none absolute top-1/2 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full transition-[left,height,background-color]',
-        isActive ? 'bg-black/56 dark:bg-white/72 h-5.5 duration-0' : 'duration-75'
+        'bg-black/28 dark:bg-white/44 h-4.5 pointer-events-none absolute top-1/2 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full transition-[left,height,background-color]',
+        isActive ? 'bg-black/42 dark:bg-white/60 h-5.5 duration-0' : 'duration-75'
       )}
       style={`left:max(7px, min(calc(${percentage}% - 2px), calc(100% - 7px)))`}
     ></div>
