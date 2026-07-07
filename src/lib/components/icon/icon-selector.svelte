@@ -1,5 +1,6 @@
 <script lang="ts">
   import { cn } from '$lib/utils';
+  import { tick } from 'svelte';
   import { Search, ShuffleIcon } from 'lucide-svelte';
   import { AVAILABLE_ICONS, getIconSvg, ICON_NAMES, getRandomIcon } from '$lib/data/icons';
   import Button from '$lib/components/ui/button.svelte';
@@ -53,14 +54,33 @@
   }
 
   let fileInput: HTMLInputElement;
+  let scrollViewport: HTMLDivElement;
 
   let searchQuery = $state('');
+  let showTopFade = $state(false);
+  let showBottomFade = $state(false);
 
   const filteredIcons = $derived(() => {
     if (!searchQuery.trim()) return availableIcons();
     return availableIcons().filter((name) =>
       name.toLowerCase().includes(searchQuery.toLowerCase())
     );
+  });
+
+  function updateScrollFade() {
+    if (!scrollViewport) return;
+
+    const { scrollTop, scrollHeight, clientHeight } = scrollViewport;
+    const maxScrollTop = scrollHeight - clientHeight;
+
+    showTopFade = scrollTop > 0;
+    showBottomFade = maxScrollTop - scrollTop > 1;
+  }
+
+  $effect(() => {
+    filteredIcons();
+
+    tick().then(updateScrollFade);
   });
 </script>
 
@@ -115,7 +135,22 @@
     </label>
   </div>
 
-  <div class="max-h-64 min-h-64 overflow-y-auto">
+  <div
+    bind:this={scrollViewport}
+    onscroll={updateScrollFade}
+    class={cn(
+      'max-h-64 min-h-64 overflow-y-auto',
+      showTopFade &&
+        showBottomFade &&
+        '[-webkit-mask-image:linear-gradient(to_bottom,_transparent_0,_#000_28px,_#000_calc(100%_-_28px),_transparent_100%)] [mask-image:linear-gradient(to_bottom,_transparent_0,_#000_28px,_#000_calc(100%_-_28px),_transparent_100%)]',
+      showTopFade &&
+        !showBottomFade &&
+        '[-webkit-mask-image:linear-gradient(to_bottom,_transparent_0,_#000_28px,_#000_100%)] [mask-image:linear-gradient(to_bottom,_transparent_0,_#000_28px,_#000_100%)]',
+      !showTopFade &&
+        showBottomFade &&
+        '[-webkit-mask-image:linear-gradient(to_bottom,_#000_0,_#000_calc(100%_-_28px),_transparent_100%)] [mask-image:linear-gradient(to_bottom,_#000_0,_#000_calc(100%_-_28px),_transparent_100%)]'
+    )}
+  >
     <div
       class="border-black/8 dark:border-white/8 overflow-hidden rounded-[14px] border bg-black/[0.06] p-px dark:bg-white/[0.08]"
     >
