@@ -26,7 +26,7 @@
         clearTimeout(timeoutId);
       }
 
-      sileo.success({ title: 'Copied to clipboard!' });
+      sileo.success({ title: 'Copied to clipboard' });
       timeoutId = setTimeout(() => {
         copied = false;
       }, 2000);
@@ -48,7 +48,7 @@
   variant="glass"
   {size}
   {disabled}
-  title={copied ? 'Copied!' : 'Copy'}
+  title={copied ? 'Copied' : 'Copy'}
   class={className}
   onclick={handleCopy}
 >
