@@ -49,7 +49,8 @@
   async function exportSVG() {
     sileo.promise(getCompleteSVG(), {
       loading: { title: 'Generating SVG...' },
-      success: (svgData) => {
+      success: { title: 'SVG generated successfully!', icon: null },
+      action: (svgData) => {
         const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
         const url = URL.createObjectURL(svgBlob);
 
@@ -59,7 +60,7 @@
         link.click();
 
         URL.revokeObjectURL(url);
-        return { title: 'SVG generated successfully!' };
+        return { title: 'SVG generated successfully!', icon: null };
       },
       error: () => ({ title: 'Failed to generate SVG' })
     });
@@ -105,7 +106,8 @@
 
       sileo.promise(png, {
         loading: { title: 'Generating PNG...' },
-        success: () => ({ title: 'PNG generated successfully!' }),
+        success: { title: 'PNG generated successfully!', icon: null },
+        action: () => ({ title: 'PNG generated successfully!', icon: null }),
         error: () => ({ title: 'Failed to generate PNG' })
       });
     } catch {
@@ -120,7 +122,8 @@
 
       sileo.promise(generateImageDataFromSVG(svgData, sizes), {
         loading: { title: 'Generating ICO...' },
-        success: (images) => {
+        success: { title: 'ICO generated successfully!', icon: null },
+        action: (images) => {
           const icoData = createICOFile(images, sizes);
           const blob = new Blob([icoData], { type: 'image/x-icon' });
           const url = URL.createObjectURL(blob);
@@ -131,7 +134,7 @@
           link.click();
 
           URL.revokeObjectURL(url);
-          return { title: 'ICO generated successfully!' };
+          return { title: 'ICO generated successfully!', icon: null };
         },
         error: () => ({ title: 'Failed to generate ICO' })
       });

@@ -26,7 +26,7 @@
         clearTimeout(timeoutId);
       }
 
-      sileo.success({ title: 'Copied to clipboard' });
+      sileo.action({ title: 'Copied to clipboard', icon: null });
       timeoutId = setTimeout(() => {
         copied = false;
       }, 2000);

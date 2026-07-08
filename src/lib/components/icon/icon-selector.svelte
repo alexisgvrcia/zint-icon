@@ -36,7 +36,7 @@
         selectedIcon.set('Custom');
       };
       reader.readAsText(file);
-      sileo.success({ title: 'SVG icon uploaded successfully!' });
+      sileo.action({ title: 'SVG icon uploaded successfully!', icon: null });
       return;
     }
 
@@ -50,7 +50,7 @@
         selectedIcon.set('Custom');
       };
       reader.readAsDataURL(file);
-      sileo.success({ title: 'Image icon uploaded successfully!' });
+      sileo.action({ title: 'Image icon uploaded successfully!', icon: null });
       return;
     }
 
