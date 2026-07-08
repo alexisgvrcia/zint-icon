@@ -9,7 +9,7 @@
   import { onMount } from 'svelte';
   import { scale } from 'svelte/transition';
   import { createICOFile, generateImageDataFromSVG } from '$lib/parser/ico';
-  import { toast } from 'svelte-sonner';
+  import { sileo } from 'svelte-sileo';
   import { getCompleteSVG } from '$lib/parser/svg';
   import { cn } from '$lib/utils';
 
@@ -47,8 +47,8 @@
   let svgContent = $state('');
 
   async function exportSVG() {
-    toast.promise(getCompleteSVG(), {
-      loading: 'Generating SVG...',
+    sileo.promise(getCompleteSVG(), {
+      loading: { title: 'Generating SVG...' },
       success: (svgData) => {
         const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
         const url = URL.createObjectURL(svgBlob);
@@ -59,9 +59,9 @@
         link.click();
 
         URL.revokeObjectURL(url);
-        return 'SVG generated successfully!';
+        return { title: 'SVG generated successfully!' };
       },
-      error: () => `Failed to generate SVG`
+      error: () => ({ title: 'Failed to generate SVG' })
     });
   }
 
@@ -103,15 +103,13 @@
         img.src = url;
       });
 
-      toast.promise(png, {
-        loading: 'Generating PNG...',
-        success: () => {
-          return 'PNG generated successfully!';
-        },
-        error: () => `Failed to generate PNG`
+      sileo.promise(png, {
+        loading: { title: 'Generating PNG...' },
+        success: () => ({ title: 'PNG generated successfully!' }),
+        error: () => ({ title: 'Failed to generate PNG' })
       });
     } catch {
-      toast.error('Failed to export PNG');
+      sileo.error({ title: 'Failed to export PNG' });
     }
   }
 
@@ -120,8 +118,8 @@
       const svgData = await getCompleteSVG();
       const sizes = [16, 32, 48, 64, 128, 256];
 
-      toast.promise(generateImageDataFromSVG(svgData, sizes), {
-        loading: 'Generating ICO...',
+      sileo.promise(generateImageDataFromSVG(svgData, sizes), {
+        loading: { title: 'Generating ICO...' },
         success: (images) => {
           const icoData = createICOFile(images, sizes);
           const blob = new Blob([icoData], { type: 'image/x-icon' });
@@ -133,12 +131,12 @@
           link.click();
 
           URL.revokeObjectURL(url);
-          return 'ICO generated successfully!';
+          return { title: 'ICO generated successfully!' };
         },
-        error: () => `Failed to generate ICO`
+        error: () => ({ title: 'Failed to generate ICO' })
       });
     } catch {
-      toast.error('Failed to export ICO');
+      sileo.error({ title: 'Failed to export ICO' });
     }
   }
 </script>

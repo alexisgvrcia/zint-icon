@@ -6,7 +6,7 @@
   import Button from '$lib/components/ui/button.svelte';
   import { Upload } from 'lucide-svelte';
   import { selectedIcon, customSvg, customPng, customContentType } from '$lib/stores/icon';
-  import { toast } from 'svelte-sonner';
+  import { sileo } from 'svelte-sileo';
 
   function selectRandomIcon() {
     const randomIcon = getRandomIcon();
@@ -36,7 +36,7 @@
         selectedIcon.set('Custom');
       };
       reader.readAsText(file);
-      toast.success('SVG icon uploaded successfully!');
+      sileo.success({ title: 'SVG icon uploaded successfully!' });
       return;
     }
 
@@ -50,11 +50,11 @@
         selectedIcon.set('Custom');
       };
       reader.readAsDataURL(file);
-      toast.success('Image icon uploaded successfully!');
+      sileo.success({ title: 'Image icon uploaded successfully!' });
       return;
     }
 
-    toast.error('Unsupported file type. Use SVG, PNG, JPG or WebP.');
+    sileo.error({ title: 'Unsupported file type. Use SVG, PNG, JPG or WebP.' });
   }
 
   function handleFileUpload(event: Event) {

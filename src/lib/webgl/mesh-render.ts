@@ -1,7 +1,7 @@
 import { createShaderProgram } from './shader';
 import type { MeshGradientColor } from '$lib/types';
 import { hexToRgb } from '$lib/utils/webgl';
-import { toast } from 'svelte-sonner';
+import { sileo } from 'svelte-sileo';
 
 export function initRender(
   canvas: HTMLCanvasElement,
@@ -18,7 +18,7 @@ export function initRender(
   const gl = canvas.getContext('webgl');
 
   if (!gl) {
-    toast.error('WebGL not supported in this browser.');
+    sileo.error({ title: 'WebGL not supported in this browser.' });
     return { render: () => {}, cleanup: () => {} };
   }
 
