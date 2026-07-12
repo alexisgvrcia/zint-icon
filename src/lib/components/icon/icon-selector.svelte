@@ -1,10 +1,10 @@
 <script lang="ts">
   import { cn } from '$lib/utils';
   import { tick } from 'svelte';
-  import { Search, ShuffleIcon } from 'lucide-svelte';
+  import { Search, ShuffleIcon } from '@lucide/svelte';
   import { AVAILABLE_ICONS, getIconSvg, ICON_NAMES, getRandomIcon } from '$lib/data/icons';
   import Button from '$lib/components/ui/button.svelte';
-  import { Upload } from 'lucide-svelte';
+  import { Upload } from '@lucide/svelte';
   import { selectedIcon, customSvg, customPng, customContentType } from '$lib/stores/icon';
   import { sileo } from 'svelte-sileo';
 

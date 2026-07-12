@@ -2,7 +2,7 @@
   import { flip } from 'svelte/animate';
   import { cubicOut } from 'svelte/easing';
   import { slide } from 'svelte/transition';
-  import { Plus, Minus, RefreshCw } from 'lucide-svelte';
+  import { Plus, Minus, RefreshCw } from '@lucide/svelte';
   import Button from '$lib/components/ui/button.svelte';
   import { colorPalette } from '$lib/constants';
   import ColorField from '$lib/components/ui/color-field.svelte';

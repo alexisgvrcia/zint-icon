@@ -5,7 +5,7 @@
   import BackgroundOptions from '$lib/components/configuration/background-options.svelte';
   import IconOptions from '$lib/components/configuration/icon-options.svelte';
   import Button from '$lib/components/ui/button.svelte';
-  import { ImageIcon, PencilIcon } from 'lucide-svelte';
+  import { ImageIcon, PencilIcon } from '@lucide/svelte';
 
   let activeAside: 'icon' | 'background' = 'icon';
 </script>

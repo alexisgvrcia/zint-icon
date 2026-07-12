@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Copy, Check } from 'lucide-svelte';
+  import { Copy, Check } from '@lucide/svelte';
   import Button from './button.svelte';
   import { sileo } from 'svelte-sileo';
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Download, ChevronDown } from 'lucide-svelte';
+  import { Download, ChevronDown } from '@lucide/svelte';
   import { cubicOut } from 'svelte/easing';
   import Button from '$lib/components/ui/button.svelte';
   import CopyButton from '$lib/components/ui/copy-button.svelte';
