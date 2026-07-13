@@ -1,20 +1,16 @@
 # ZintIcon
 
-> ZintIcon - Minimalist Gradient Icon Generator
+> ZintIcon is a browser-based generator for creating minimalist icons with customizable gradient backgrounds and exporting them as SVG, PNG, or ICO files.
 
-Create minimalist icons with gradient backgrounds directly in your browser and export them as SVG, PNG, or ICO.
+Use the web application to select an icon, customize its appearance and background, preview the result, and download the generated asset.
 
-## Product Summary
-- Browser-based icon generator for minimalist icon concepts.
-- Supports visual icon selection and gradient background customization.
-- Exports assets as SVG, PNG, and ICO.
+## Application
 
-## Important URLs
-- Home: https://zinticon.alexisgvrcia.dev/
-- Sitemap: https://zinticon.alexisgvrcia.dev/sitemap.xml
-- Robots: https://zinticon.alexisgvrcia.dev/robots.txt
-- Source: https://github.com/alexisgvrcia/zint-icon
+- [ZintIcon](https://zinticon.alexisgvrcia.dev/): Create and export customizable minimalist icons.
+- [Sitemap](https://zinticon.alexisgvrcia.dev/sitemap.xml): List of public pages on the site.
+- [Robots policy](https://zinticon.alexisgvrcia.dev/robots.txt): Crawler access policy.
 
-## Preferred Citation
-- Brand: ZintIcon
-- Description: Create minimalist icons with gradient backgrounds directly in your browser and export them as SVG, PNG, or ICO.
+## Source
+
+- [Project repository](https://github.com/alexisgvrcia/zint-icon): Source code, setup instructions, and implementation details.
+- [README](https://github.com/alexisgvrcia/zint-icon/blob/main/README.md): Feature overview, installation, and development instructions.
