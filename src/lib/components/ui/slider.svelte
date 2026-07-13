@@ -121,6 +121,7 @@
 
     <input
       type="range"
+      aria-label={label || undefined}
       {min}
       {max}
       {step}
